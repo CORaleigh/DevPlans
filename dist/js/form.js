@@ -88,7 +88,7 @@ $("form").submit(function(){
       init.deleteID = response.addResults[0].objectId
       bootbox.alert('Object ' + init.deleteID + ' was Created<br><strong class="text-success">ADD COMPLETED</strong><p class="text-muted">Click Add New Record <strong class="text-warning">BEFORE</strong> entering new data</p>');
       $("#updater").remove();
-        $("#frame").append('<a id="new" class="btn btn-success btn-lg" href="../devApp/Update.html">Add New Record</a>')
+        $("#frame").append('<a id="new" class="btn btn-success btn-lg" href="../DevPlans/DevPlanSearch.html">Add New Record</a>')
         $("#frame").append('<button id="delete" type="button" class="btn btn-danger btn-lg">Delete Last Record</button>')
         $("#delete").click(function(){
    $.ajax({
