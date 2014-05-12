@@ -40,7 +40,7 @@ var init = {
             var ptype = data.features[each].attributes.PLAN_TYPE;
             var pYear = data.features[each].attributes.PLAN_YEAR;
             var pID = data.features[each].attributes.PLAN;
-            var hyperlink = '/////corpubw/Archives/DEVELOPMENT_PLANS/' + PLAN;
+            var hyperlink = '/////corpubw/Archives/DEVELOPMENT_PLANS/' + pID;
 
 
             init.items.push([ptype, plnNum, pYear, pID, descr, numSh, '<a href=' + '"' + hyperlink + '"' + '>'+ pID + '</a>']);
