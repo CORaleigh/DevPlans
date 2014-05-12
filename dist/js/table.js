@@ -33,29 +33,17 @@ var init = {
 
           console.log(data)
           for(each in data.features){
-            var cal_year = data.features[each].attributes.CALENDEAR_YEAR;
             var descr = data.features[each].attributes.DESCRIPTION_OF_PLAN;
             var plnNum = data.features[each].attributes.PLAN_NUMBER;
             var numSh = data.features[each].attributes.NUMBER_OF_SHEETS;
             var projectOnFile = data.features[each].attributes.PROJECT_ON_FILE;
             var ptype = data.features[each].attributes.PLAN_TYPE;
             var pYear = data.features[each].attributes.PLAN_YEAR;
-            var link = data.features[each].attributes.LINK;
             var pID = data.features[each].attributes.PLAN;
-            var hyperlink = '/////corpubw/Archives/DEVELOPMENT_PLANS/' + link;
+            var hyperlink = '/////corpubw/Archives/DEVELOPMENT_PLANS/' + PLAN;
 
-            
-            
-            var date = new Date(cal_year);
-            var d = date.getUTCDate();
-            var m = date.getUTCMonth() + 1;
-            var y = date.getUTCFullYear();
-            var formatedDate = m + '/' + d + '/' + y;
-            if (formatedDate == '1/1/1970'){
-              formatedDate = null;
-            }
 
-            init.items.push([ptype, plnNum, pYear, formatedDate, pID, descr, numSh, '<a href=' + '"' + hyperlink + '"' + '>'+ pID + '</a>']);
+            init.items.push([ptype, plnNum, pYear, pID, descr, numSh, '<a href=' + '"' + hyperlink + '"' + '>'+ pID + '</a>']);
            
           }
             //Recalls data if the response exceeds the max freatures returned
@@ -101,8 +89,7 @@ function createTable(info){
               "aoColumns": [
             { "sTitle": "PLAN TYPE" },
             { "sTitle": "PLAN #"},
-            { "sTitle": "PLAN YEAR" },
-            { "sTitle": "CALENDAR YEAR" },     
+            { "sTitle": "PLAN YEAR" },    
             { "sTitle": "PLAN", "sClass": "center" },
             { "sTitle": "DESCRIPITION", "sClass": "center" },
             { "sTitle": "# OF SHEETS", "sClass": "center"},
