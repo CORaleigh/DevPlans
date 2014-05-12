@@ -32,13 +32,13 @@ var init = {
               "esriFieldTypeString" : '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="text" maxlength="'+ fieldlen +'" class="form-control" placeholder=""></div>',
               "esriFieldTypeSmallInteger": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="number" maxlength="'+ fieldlen +'" class="form-control" placeholder=""></div>',
               "PLAN": '<fieldset disabled><div id="'+field+ 'div" class="form-group"><label for="'+ field +'">'+ field +'</label><input type="text" id="' + field + '" maxlength="'+ fieldlen +'" class="form-control" placeholder="..."></div>',
-              "CALENDEAR_YEAR":  '<div id="'+field+'div" class="form-group"><label for="'+ field + '">CALENDAR YEAR</label><input type="date" class="form-control" id="'+ field +'" placeholder="mm/dd/yyyy"></div>'
+              //"CALENDEAR_YEAR":  '<div id="'+field+'div" class="form-group"><label for="'+ field + '">CALENDAR YEAR</label><input type="date" class="form-control" id="'+ field +'" placeholder="mm/dd/yyyy"></div>'
 
 
             }
 
             //Create Post Template
-            if (field != 'OBJECTID' || field != 'ID'){
+            if (field != 'OBJECTID' || field != 'ID' || field != 'CALENDEAR_YEAR' ){
               init.post.attributes[field] = '#' + field
               init.fieldlengths[field] = fieldlen
             }
@@ -51,9 +51,9 @@ var init = {
             else if (field == "PLAN"){
               $("#updater").append(formControls.PLAN)
             }
-            else if (field == "CALENDEAR_YEAR"){
-              $("#updater").append(formControls.CALENDEAR_YEAR)
-            }
+            // else if (field == "CALENDEAR_YEAR"){
+            //   $("#updater").append(formControls.CALENDEAR_YEAR)
+            // }
             else if (fieldType == "esriFieldTypeString" && field != "LINK"){
               $("#updater").append(formControls.esriFieldTypeString)
             }
