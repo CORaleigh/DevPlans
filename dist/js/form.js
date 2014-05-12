@@ -88,7 +88,7 @@ $("form").submit(function(){
       init.deleteID = response.addResults[0].objectId
       bootbox.alert('Object ' + init.deleteID + ' was Created<br><strong class="text-success">ADD COMPLETED</strong><p class="text-muted">Click Add New Record <strong class="text-warning">BEFORE</strong> entering new data</p>');
       $("#updater").remove();
-        $("#frame").append('<a id="new" class="btn btn-success btn-lg" href="../DevPlans/DevPlanSearch.html">Add New Record</a>')
+        $("#frame").append('<a id="new" class="btn btn-success btn-lg" href="../DevPlans/Update.html">Add New Record</a>')
         $("#frame").append('<button id="delete" type="button" class="btn btn-danger btn-lg">Delete Last Record</button>')
         $("#delete").click(function(){
    $.ajax({
@@ -114,7 +114,7 @@ $("form").submit(function(){
       else {
          bootbox.alert('<h1 class="text-danger">FAILURE</h1><h3>The Record <strong class="text-danger">WAS NOT ADDED!!!</strong></h3><h4 class="text-warning">Code: '+ response.addResults[0].error.code+', ' + response.addResults[0].error.description + '</h4><p>Please check to make sure all fields are filled out correctly</p><p class="text-muted">If the problem persists please call 919-996-2369</p>');
          $("#updater").remove();
-          $("#frame").append('<a id="try" class="btn btn-warning btn-lg" href="../devApp/Update.html">Try Again</a>')
+          $("#frame").append('<a id="try" class="btn btn-warning btn-lg" href="../DevPlans/Update.html">Try Again</a>')
       }
       $('form').each(function(){
         this.reset();
