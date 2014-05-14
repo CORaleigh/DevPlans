@@ -32,13 +32,13 @@ var init = {
               "esriFieldTypeString" : '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="text" maxlength="'+ fieldlen +'" class="form-control" placeholder=""></div>',
               "esriFieldTypeSmallInteger": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="number" maxlength="'+ fieldlen +'" class="form-control" placeholder=""></div>',
               "PLAN": '<fieldset disabled><div id="'+field+ 'div" class="form-group"><label for="'+ field +'">'+ field +'</label><input type="text" id="' + field + '" maxlength="'+ fieldlen +'" class="form-control" placeholder="..."></div>',
-              //"CALENDEAR_YEAR":  '<div id="'+field+'div" class="form-group"><label for="'+ field + '">CALENDAR YEAR</label><input type="date" class="form-control" id="'+ field +'" placeholder="mm/dd/yyyy"></div>'
-
+              "PLAN_YEAR": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="number" minlength="4" maxlength="'+ fieldlen +'" class="form-control" placeholder="YYYY" required/></div>',
+              "PLAN_TYPE": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><br><select id="'+ field +'" ><option value="S">S - Subdivision</option><option value="SP">SP - Site Plan</option><option value="EX">EX - Exempy Subdivision</option><option value="GH">GH - Group Housing</option><option value="MS">MS - Minor Subdivision</option><option value="PA">PA - Plan Approval</option><option value="IP">IP - Internal Project</option><option value="MP">MP - Master Plan</option><option value="IR">IR - Infill Recombination</option><option value="RW">RW - Right of Way</option><option value="SU">SU - Special Use</option><option value="MH">MH - Mobil Home</option><option value="BS">BS - Boundary Survey</option><option value="SC">SC - Shopping Center</option><option value="ENG">ENG A-Z</option></select></div>',  
 
             }
 
             //Create Post Template
-            if (field != 'OBJECTID' || field != 'ID' || field != 'CALENDEAR_YEAR' ){
+            if (field != 'OBJECTID' || field != 'ID' ){
               init.post.attributes[field] = '#' + field
               init.fieldlengths[field] = fieldlen
             }
@@ -51,10 +51,13 @@ var init = {
             else if (field == "PLAN"){
               $("#updater").append(formControls.PLAN)
             }
-            // else if (field == "CALENDEAR_YEAR"){
-            //   $("#updater").append(formControls.CALENDEAR_YEAR)
-            // }
-            else if (fieldType == "esriFieldTypeString" && field != "LINK"){
+             else if (field == "PLAN_TYPE"){
+              $("#updater").append(formControls.PLAN_TYPE)
+            }
+            else if (field == "PLAN_YEAR"){
+              $("#updater").append(formControls.PLAN_YEAR)
+            }
+            else if (fieldType == "esriFieldTypeString"){
               $("#updater").append(formControls.esriFieldTypeString)
             }
       
@@ -67,7 +70,10 @@ var init = {
     }, //End of url()
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 submintForm: function(){
+
+
       $("#updater").validate();
+
 
 var jsonlist = []; 
 $("form").submit(function(){
