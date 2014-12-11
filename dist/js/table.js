@@ -40,11 +40,11 @@ var init = {
             var ptype = data.features[each].attributes.PLAN_TYPE;
             var pYear = data.features[each].attributes.PLAN_YEAR;
             var pID = data.features[each].attributes.PLAN;
-            var hyperlink = 'http://gis.raleighnc.gov/publicutility/devplans/' + pID;
+            var hyperlink = 'http://devplansarchive.ci.raleigh.nc.us/documents/devplans/' + pID;
 
 
             init.items.push([ptype, plnNum, pYear, pID, descr, numSh, '<a href=' + '"' + hyperlink + '"' + '>'+ pID + '</a>']);
-           
+
           }
             //Recalls data if the response exceeds the max freatures returned
             if (data.features.length == 1000 ){
@@ -59,7 +59,7 @@ var init = {
             }
 
         });
-        
+
       }
 }
 
@@ -71,7 +71,7 @@ function createTable(info){
   jQuery.fn.dataTableExt.oSort['string-case-asc']  = function(x,y) {
     return ((x < y) ? -1 : ((x > y) ?  1 : 0));
   };
- 
+
   jQuery.fn.dataTableExt.oSort['string-case-desc'] = function(x,y) {
     return ((x < y) ?  1 : ((x > y) ? -1 : 0));
   };
@@ -89,14 +89,12 @@ function createTable(info){
               "aoColumns": [
             { "sTitle": "PLAN TYPE" },
             { "sTitle": "PLAN #"},
-            { "sTitle": "PLAN YEAR" },    
+            { "sTitle": "PLAN YEAR" },
             { "sTitle": "PLAN", "sClass": "center" },
             { "sTitle": "DESCRIPITION", "sClass": "center" },
             { "sTitle": "# OF SHEETS", "sClass": "center"},
-            { "sTitle": "Link TO FOLDER", "sClass": "center"}   
+            { "sTitle": "Link TO FOLDER", "sClass": "center"}
           ]
     });
   });
 }
-
-
