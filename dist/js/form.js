@@ -14,11 +14,11 @@ var init = {
       if (init.post.attributes.NUMBER_OF_SHEETS == ""){
         init.post.attributes.NUMBER_OF_SHEETS = 0
       }
-    } 
-        
-        
+    }
+
+
   },
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////  
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   url: function(){
       var url = init.fieldsurl;
         $.getJSON(url , function( data ) {
@@ -33,7 +33,7 @@ var init = {
               "esriFieldTypeSmallInteger": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="number" maxlength="'+ fieldlen +'" class="form-control" placeholder=""></div>',
               "PLAN": '<fieldset disabled><div id="'+field+ 'div" class="form-group"><label for="'+ field +'">'+ field +'</label><input type="text" id="' + field + '" maxlength="'+ fieldlen +'" class="form-control" placeholder="..."></div>',
               "PLAN_YEAR": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><input id="'+ field +'" type="number" minlength="4" maxlength="'+ fieldlen +'" class="form-control" placeholder="YYYY" required/></div>',
-              "PLAN_TYPE": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><br><select id="'+ field +'" ><option value="S">S - Subdivision</option><option value="SP">SP - Site Plan</option><option value="EX">EX - Exempy Subdivision</option><option value="GH">GH - Group Housing</option><option value="MS">MS - Minor Subdivision</option><option value="PA">PA - Plan Approval</option><option value="IP">IP - Internal Project</option><option value="MP">MP - Master Plan</option><option value="IR">IR - Infill Recombination</option><option value="RW">RW - Right of Way</option><option value="SU">SU - Special Use</option><option value="MH">MH - Mobil Home</option><option value="BS">BS - Boundary Survey</option><option value="SC">SC - Shopping Center</option><option value="ENG">ENG A-Z</option><option value="MI">MI - Misc.</option></select></div>',  
+              "PLAN_TYPE": '<div id="'+field+'div" class="form-group"><label for="' + field +'">'+field+'</label><br><select id="'+ field +'" ><option value="S">S - Subdivision</option><option value="SP">SP - Site Plan</option><option value="EX">EX - Exempy Subdivision</option><option value="GH">GH - Group Housing</option><option value="MS">MS - Minor Subdivision</option><option value="PA">PA - Plan Approval</option><option value="IP">IP - Internal Project</option><option value="MP">MP - Master Plan</option><option value="IR">IR - Infill Recombination</option><option value="RW">RW - Right of Way</option><option value="SU">SU - Special Use</option><option value="MH">MH - Mobil Home</option><option value="BS">BS - Boundary Survey</option><option value="SC">SC - Shopping Center</option><option value="SR">SR - Site Review</option><option value="ENG">ENG A-Z</option><option value="MI">MI - Misc.</option></select></div>',  
 
             }
 
@@ -42,9 +42,9 @@ var init = {
               init.post.attributes[field] = '#' + field
               init.fieldlengths[field] = fieldlen
             }
-          
 
-            
+
+
             if (fieldType == "esriFieldTypeSmallInteger" || fieldType == "esriFieldTypeDouble"){
               $("#updater").append(formControls.esriFieldTypeSmallInteger)
             }
@@ -60,7 +60,7 @@ var init = {
             else if (fieldType == "esriFieldTypeString"){
               $("#updater").append(formControls.esriFieldTypeString)
             }
-      
+
 
         }
         //Adds the submit button
@@ -75,11 +75,11 @@ submintForm: function(){
       $("#updater").validate();
 
 
-var jsonlist = []; 
+var jsonlist = [];
 $("form").submit(function(){
   init.DataObj();
   init.indata.push(init.post);
-  
+
   $.ajax({
     url: init.updateurl,
     type: 'POST',
@@ -89,7 +89,7 @@ $("form").submit(function(){
     },
     success: function (response){
       console.log(response);
-      
+
       if (response.addResults[0].success == true){
       init.deleteID = response.addResults[0].objectId
       bootbox.alert('Object ' + init.deleteID + ' was Created<br><strong class="text-success">ADD COMPLETED</strong><p class="text-muted">Click Add New Record <strong class="text-warning">BEFORE</strong> entering new data</p>');
@@ -113,7 +113,7 @@ $("form").submit(function(){
       console.log(error)
       bootbox.alert('<h1 class="text-danger">FAILURE</h1><h3>The Record WAS <strong class="text-danger">NOT Deleted!!!</strong></h3><p>If you still wish to delete the added feature please make changes via Microsoft Access</p><p class="text-muted">Future updates will allow you to make further changes in the browser...Sorry for the inconvience</p>');
     }
-        
+
       }); //End of Post Delete
     }); //End of Delete
       }
@@ -129,15 +129,15 @@ $("form").submit(function(){
     //     return
     //   }
     //   else{
-        
+
 
     // }
     },
-    
+
 
   });//End of Post update
-  
-  
+
+
 
 return false
 });
