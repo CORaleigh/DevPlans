@@ -27,7 +27,7 @@ var init = {
   start: 0,
   spinner: new Spinner(opts),
   url: function(count){
-      var url = "http://gis.raleighnc.gov/arcgis/rest/services/PublicUtility/DataCollection/MapServer/2/query?where=OBJECTID+>+"+ count +"&outFields=*&f=pjson";
+      var url = "http://gis.raleighnc.gov/arcgis/rest/services/PublicUtility/DataCollection/MapServer/1/query?where=OBJECTID+>+"+ count +"&outFields=*&f=pjson";
         $.getJSON(url , function( data ) {
           init.spinner.spin(target);
 
